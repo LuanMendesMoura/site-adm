@@ -1,7 +1,7 @@
 function openMenu() {
-    alert("TESTE")
-}
-
-function closeMenu() {
-    alert("TESTE 2")
+    if (menu.style.visibility == "visible") {
+        menu.style.visibility = "hidden"
+    } else {
+        menu.style.visibility = "visible"
+    }
 }

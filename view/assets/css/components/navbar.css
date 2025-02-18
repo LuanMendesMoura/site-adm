@@ -12,6 +12,7 @@ header {
         display: flex;
     }
     img {
+        cursor: pointer;
         position: relative;
         margin: 0 auto;
         width: 50px;
