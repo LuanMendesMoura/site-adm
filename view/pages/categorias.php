@@ -105,18 +105,11 @@ $categorias = [
 
 ?>
 
-<!DOCTYPE html>
-<html lang="pt-BR">
+<?php require_once './../components/head.php' ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Categorias</title>
-    <link rel="stylesheet" href="/site-adm/view/assets/css/style.css">
-</head>
 <body>
-    <?php require_once __DIR__ . '\..\components\navbar.php'; ?>
-    <?php require_once __DIR__ . '\..\components\sidebar.php'; ?>
+    <?php require_once './../components/navbar.php'; ?>
+    <?php require_once './../components/sidebar.php'; ?>
 
     <main>
         <h1>Categorias</h1>
@@ -127,6 +120,7 @@ $categorias = [
                     <th>ID</th>
                     <th>Nome</th>
                     <th>Descrição</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -135,12 +129,28 @@ $categorias = [
                         <td><?php echo $categoria['id'] ?></td>
                         <td><?php echo $categoria['nome'] ?></td>
                         <td><?php echo $categoria['descricao'] ?></td>
+                        <td>
+                            <form action="editar.php" method="GET">
+                                <input type="hidden" name="id" value="<?= $categoria['id']; ?>">
+                                <button class="icon-btn">
+                                    <img class="icon" src="/site-adm/view/assets/img/editar.png" alt="icone editar">
+                                </button>
+                            </form>
+
+                            <form action="excluir.php" method="POST">
+                                <input type="hidden" name="id" value="<?= $categoria['id']; ?>">
+                                <button class="icon-btn" onclick="return confirm('Tem certaza que deseja excluir o filme?')">
+                                    <img class="icon" src="/site-adm/view/assets/img/deletar.png" alt="icone editar">
+                                </button>
+                            </form>
+                        </td>
                     </tr>
                 <?php } ?>
             </tbody>
         </table>
     </main>
 
-    <?php require_once __DIR__ . '\..\components\footer.php'; ?>
+    <?php require_once './../components/footer.php'; ?>
 </body>
+
 </html>

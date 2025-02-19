@@ -158,15 +158,11 @@ $usuarios = [
 <!DOCTYPE html>
 <html lang="pt-BR">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Usuários</title>
-    <link rel="stylesheet" href="/site-adm/view/assets/css/style.css">
-</head>
+<?php require_once './../components/head.php' ?>
+
 <body>
-    <?php require_once __DIR__ . '\..\components\navbar.php'; ?>
-    <?php require_once __DIR__ . '\..\components\sidebar.php'; ?>
+    <?php require_once './../components/navbar.php'; ?>
+    <?php require_once './../components/sidebar.php'; ?>
 
     <main>
         <h1>Usuários</h1>
@@ -182,6 +178,7 @@ $usuarios = [
                     <th>Data Nascimento</th>
                     <th>CPF</th>
                     <th>Gênero</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -195,12 +192,28 @@ $usuarios = [
                         <td><?php echo $usuario['data_nascimento'] ?></td>
                         <td><?php echo $usuario['cpf'] ?></td>
                         <td><?php echo $usuario['genero'] ?></td>
+                        <td>
+                            <form action="editar.php" method="GET">
+                                <input type="hidden" name="id" value="<?= $usuario['id']; ?>">
+                                <button class="icon-btn">
+                                    <img class="icon" src="/site-adm/view/assets/img/editar.png" alt="icone editar">
+                                </button>
+                            </form>
+
+                            <form action="excluir.php" method="POST">
+                                <input type="hidden" name="id" value="<?= $usuario['id']; ?>">
+                                <button class="icon" onclick="return confirm('Tem certaza que deseja excluir o filme?')">
+                                    <img class="icon" src="/site-adm/view/assets/img/deletar.png" alt="icone editar">
+                                </button>
+                            </form>
+                        </td>
                     </tr>
                 <?php } ?>
             </tbody>
         </table>
     </main>
 
-    <?php require_once __DIR__ . '\..\components\footer.php'; ?>
+    <?php require_once './../components/footer.php'; ?>
 </body>
+
 </html>
