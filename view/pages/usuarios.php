@@ -202,8 +202,8 @@ $usuarios = [
 
                             <form action="excluir.php" method="POST">
                                 <input type="hidden" name="id" value="<?= $usuario['id']; ?>">
-                                <button class="icon" onclick="return confirm('Tem certaza que deseja excluir o filme?')">
-                                    <img class="icon" src="/site-adm/view/assets/img/deletar.png" alt="icone editar">
+                                <button class="icon-btn" onclick="return confirm('Tem certaza que deseja excluir o filme?')">
+                                    <img class="icon" src="/site-adm/view/assets/img/deletar.png" alt="icone deletar">
                                 </button>
                             </form>
                         </td>
