@@ -116,7 +116,7 @@ class  CategoriaModel {
             $this->categorias,
             function ($categoria, $index) use ($id, &$indexCategoria) {
                 if ($categoria['id'] == $id) {
-                    $indexProduto = $index;
+                    $indexCategoria = $index;
                     return $categoria;
                 }
             },
