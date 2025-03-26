@@ -5,9 +5,6 @@ $usuarioModel = new UsuarioModel();
 $listar_usuarios = $usuarioModel->listar();
 ?>
 
-<!DOCTYPE html>
-<html lang="pt-BR">
-
 <?php require_once './../components/head.php' ?>
 
 <body>
@@ -23,11 +20,9 @@ $listar_usuarios = $usuarioModel->listar();
                     <th>ID</th>
                     <th>Nome</th>
                     <th>Email</th>
-                    <th>Senha</th>
                     <th>Telefone</th>
                     <th>Data Nascimento</th>
                     <th>CPF</th>
-                    <th>Gênero</th>
                     <th>Ações</th>
                 </tr>
             </thead>
@@ -37,11 +32,9 @@ $listar_usuarios = $usuarioModel->listar();
                         <td><?php echo $usuario['id'] ?></td>
                         <td><?php echo $usuario['nome'] ?></td>
                         <td><?php echo $usuario['email'] ?></td>
-                        <td><?php echo $usuario['senha'] ?></td>
                         <td><?php echo $usuario['telefone'] ?></td>
                         <td><?php echo $usuario['data_nascimento'] ?></td>
                         <td><?php echo $usuario['cpf'] ?></td>
-                        <td><?php echo $usuario['genero'] ?></td>
                         <td>
                             <form action="editar.php" method="GET">
                                 <input type="hidden" name="id" value="<?= $usuario['id']; ?>">

@@ -19,7 +19,6 @@ $lista_categorias = $categoriaModel->listar();
                 <tr>
                     <th>ID</th>
                     <th>Nome</th>
-                    <th>Descrição</th>
                     <th>Ações</th>
                 </tr>
             </thead>
@@ -28,7 +27,6 @@ $lista_categorias = $categoriaModel->listar();
                     <tr>
                         <td><?php echo $categoria['id'] ?></td>
                         <td><?php echo $categoria['nome'] ?></td>
-                        <td><?php echo $categoria['descricao'] ?></td>
                         <td>
                             <form action="editar.php" method="GET">
                                 <input type="hidden" name="id" value="<?= $categoria['id']; ?>">
