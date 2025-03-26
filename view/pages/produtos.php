@@ -21,26 +21,27 @@ $lista_produtos = $produtoModel->listar();
                     <th>Descrição</th>
                     <th>Categoria</th>
                     <th>Preço</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($listar_usuarios as $usuario) { ?>
+                <?php foreach ($lista_produtos as $produto) { ?>
                     <tr>
-                        <td><?php echo $usuario['id'] ?></td>
-                        <td><?php echo $usuario['nome'] ?></td>
-                        <td><?php echo $usuario['descricao'] ?></td>
-                        <td><?php echo $usuario['categoria'] ?></td>
-                        <td><?php echo $usuario['preco'] ?></td>
+                        <td><?php echo $produto['id'] ?></td>
+                        <td><?php echo $produto['nome'] ?></td>
+                        <td><?php echo $produto['descricao'] ?></td>
+                        <td><?php echo $produto['categoria'] ?></td>
+                        <td><?php echo $produto['preco'] ?></td>
                         <td>
                             <form action="editar.php" method="GET">
-                                <input type="hidden" name="id" value="<?= $usuario['id']; ?>">
+                                <input type="hidden" name="id" value="<?= $produto['id']; ?>">
                                 <button class="icon-btn">
                                     <img class="icon" src="/site-adm/view/assets/img/editar.png" alt="icone editar">
                                 </button>
                             </form>
 
                             <form action="excluir.php" method="POST">
-                                <input type="hidden" name="id" value="<?= $usuario['id']; ?>">
+                                <input type="hidden" name="id" value="<?= $produto['id']; ?>">
                                 <button class="icon-btn" onclick="return confirm('Tem certaza que deseja excluir o filme?')">
                                     <img class="icon" src="/site-adm/view/assets/img/deletar.png" alt="icone deletar">
                                 </button>

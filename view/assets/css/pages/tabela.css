@@ -16,6 +16,6 @@ table {
 
 }
 
-tr:nth-child(even) {
-  background: #cac9b8;
+tr:hover {
+  background-color: #cac9b8;
 }
