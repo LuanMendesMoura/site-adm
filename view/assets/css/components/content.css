@@ -1,7 +1,7 @@
 main {
     width: calc(100vw - 200px);
     height: calc(100vh - 68px - 22px);
-    background-color: #f8f7e3;
+    background-color: var(--color-content);
     /* position: fixed;
     right: 0;
     top: 68px; */

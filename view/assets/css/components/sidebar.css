@@ -1,7 +1,7 @@
 aside {
     width: 200px;
     height: 100vh;
-    background-color: #535233;
+    background-color: var(--color-sidebar);
     /* position: fixed;
     left: 0; */
     grid-column: 1;
@@ -10,7 +10,7 @@ aside {
 
     a {
         text-decoration: none;
-        color: #fff;
+        color: var(--color-letras-sidebar);
         font-weight: bold;
         letter-spacing: 1px;
         font-size: 1.1rem;
