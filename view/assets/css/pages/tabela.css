@@ -8,10 +8,6 @@ table {
     padding: 5px;
   }
 
-  tr {
-    border: 1px solid oklch(0.87 0 0)
-  };
-
   th {
     background-color: oklch(0.705 0.015 286.067);
     color: white;

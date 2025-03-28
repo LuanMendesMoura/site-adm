@@ -9,10 +9,10 @@
 
 :root {
     --color-content: #fff;
-    --color-footer: oklch(0.391 0.09 240.876);
-    --color-navbar: oklch(0.391 0.09 240.876);
+    --color-footer: #282A35;
+    --color-navbar: #282A35 ;
     --color-sidebar: oklch(0.685 0.169 237.323);
-    --color-letras: #000;
+    --color-letras: #fff;
     --color-letras-sidebar: #fff;
 }
 

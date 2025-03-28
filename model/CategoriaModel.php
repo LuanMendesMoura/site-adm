@@ -1,108 +1,44 @@
 <?php
 
+require_once __DIR__ . "/../config/Database.php";
+
 class  CategoriaModel {
 
-    private $categorias = [
-        [
-            'id' => '1',
-            'nome' => 'Eletrônicos',
-        ],
-        [
-            'id' => '2',
-            'nome' => 'Eletrodomésticos',
-        ],
-        [
-            'id' => '3',
-            'nome' => 'Roupas e Acessórios',
-        ],
-        [
-            'id' => '4',
-            'nome' => 'Beleza e Cuidados Pessoais',
-        ],
-        [
-            'id' => '5',
-            'nome' => 'Saúde e Bem-estar',
-        ],
-        [
-            'id' => '6',
-            'nome' => 'Alimentos e Bebidas',
-        ],
-        [
-            'id' => '7',
-            'nome' => 'Casa e Decoração',
-        ],
-        [
-            'id' => '8',
-            'nome' => 'Esportes e Lazer',
-        ],
-        [
-            'id' => '9',
-            'nome' => 'Automotivo',
-        ],
-        [
-            'id' => '10',
-            'nome' => 'Brinquedos e Jogos',
-        ],
-        [
-            'id' => '11',
-            'nome' => 'Papelaria e Escritório',
-        ],
-        [
-            'id' => '12',
-            'nome' => 'Livros e Mídia',
-        ],
-        [
-            'id' => '13',
-            'nome' => 'Música e Instrumentos Musicais',
-        ],
-        [
-            'id' => '14',
-            'nome' => 'Pet Shop',
-        ],
-        [
-            'id' => '15',
-            'nome' => 'Ferramentas e Construção',
-        ],
-        [
-            'id' => '16',
-            'nome' => 'Relógios e Óculos',
-        ],
-        [
-            'id' => '17',
-            'nome' => 'Energia Solar e Sustentabilidade',
-        ],
-        [
-            'id' => '18',
-            'nome' => 'Segurança e Monitoramento',
-        ],
-        [
-            'id' => '19',
-            'nome' => 'Viagem e Turismo',
-        ],
-        [
-            'id' => '20',
-            'nome' => 'Serviços Digitais',
-        ]
-    ];
+    private $conn;
+    private $tabela = "categorias";
+
+    public function __construct() {
+        $db = new Database();
+        $this->conn = $db->conectar();
+    }
 
     public function listar() {
-        return $this->categorias;
+        $query = "SELECT * FROM $this->tabela";
+        
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+   
+    public function buscarPorId($id){
+        $query = "SELECT * FROM $this->tabela WHERE id = :id";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":id",$id);
+        $stmt->execute();
+
+        return $stmt->fetch();
     }
 
-    public function buscarPorId($id) {
-        $indexCategoria = -1;
+    public function criar($id){
+        $query = "INSERT INTO (id,nome) $this->tabela WHERE id = :id";
 
-        $array_filtrado = array_filter(
-            $this->categorias,
-            function ($categoria, $index) use ($id, &$indexCategoria) {
-                if ($categoria['id'] == $id) {
-                    $indexCategoria = $index;
-                    return $categoria;
-                }
-            },
-            ARRAY_FILTER_USE_BOTH
-        );
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":id",$id);
+        $stmt->execute();
 
-        return $array_filtrado[$indexCategoria];
+        return $stmt->fetch();
     }
+
 }

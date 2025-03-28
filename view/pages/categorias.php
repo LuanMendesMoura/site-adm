@@ -1,8 +1,10 @@
 <?php
 
 require_once './../../model/CategoriaModel.php';
+
 $categoriaModel = new CategoriaModel();
 $lista_categorias = $categoriaModel->listar();
+
 ?>
 
 <?php require_once './../components/head.php' ?>
@@ -28,7 +30,7 @@ $lista_categorias = $categoriaModel->listar();
                         <td><?php echo $categoria['id'] ?></td>
                         <td><?php echo $categoria['nome'] ?></td>
                         <td>
-                            <form action="editar.php" method="GET">
+                            <form action="editarCategoria.php" method="GET">
                                 <input type="hidden" name="id" value="<?= $categoria['id']; ?>">
                                 <button class="icon-btn">
                                     <img class="icon" src="/site-adm/view/assets/img/editar.png" alt="icone editar">
