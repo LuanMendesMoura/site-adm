@@ -6,35 +6,28 @@ class ProdutoModel {
 
     private $conn;
     private $tabela = "produtos";
+    private $tabelaFK = "categorias";
 
     public function __construct() {
         $db = new Database();
         $this->conn = $db->conectar();
     }
     public function listar() {
-        $query = "select * from $this->tabela";
+        $query = "SELECT $this->tabela.id, $this->tabela.nome, $this->tabela.descricao, $this->tabela.preco, $this->tabela.nome FROM $this->tabela INNER JOIN $this->tabelaFK ON $this->tabela.id_categoria = $this->tabelaFK.id";
         
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
 
         return $stmt->fetchAll();
     }
-    // public function buscarPorId($id) {
-    //     $indexProduto = -1;
 
-    //     $array_filtrado = array_filter(
-    //         $this->produtos,
-    //         function ($produto, $index) use ($id, &$indexProduto) {
-    //             if ($produto['id'] == $id) {
-    //                 $indexProduto = $index;
-    //                 return $produto;
-    //             }
-    //         },
-    //         ARRAY_FILTER_USE_BOTH
-    //     );
+    public function buscarPorId($id){
+        $query = "SELECT * FROM $this->tabela WHERE id = :id";
 
-    //     return $array_filtrado[$indexProduto];
-    // }
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":id",$id);
+        $stmt->execute();
+
+        return $stmt->fetch();
+    }
 }
-
-?>

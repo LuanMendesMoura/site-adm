@@ -4,16 +4,22 @@
 @import url(components/footer.css);
 @import url(components/navbar.css);
 @import url(components/sidebar.css);
+@import url(components/button.css);
 @import url(pages/tabela.css);
 @import url(pages/produtos.css);
+@import url(pages/form.css);
 
 :root {
+    font-size: 16px;
     --color-content: #fff;
     --color-footer: #282A35;
     --color-navbar: #282A35 ;
     --color-sidebar: oklch(0.685 0.169 237.323);
     --color-letras: #fff;
     --color-letras-sidebar: #fff;
+    --color-btn-primario: rgb(13, 202, 13);
+    --color-btn-secundario: rgb(16, 143, 216);
+    --color-btn-terciario: rgb(216, 16, 16);
 }
 
 body {
@@ -29,19 +35,6 @@ h1 {
     font-weight: bold;
     letter-spacing: 1px;
     font-size: 1.2rem;
-}
-
-.icon-btn {
-    border: none;
-    background-color: transparent;
-}
-
-.icon {
-    cursor: pointer;
-    position: relative;
-    margin: 0 auto;
-    width: 30px;
-    object-fit: contain;
 }
 
 @media screen and (max-width: 490px) {

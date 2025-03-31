@@ -13,6 +13,12 @@ $lista_produtos = $produtoModel->listar();
     <main>
         <h1>Produtos</h1>
 
+        <form class="div-btn" action="produto.php" method="GET">
+            <button class="btn btn-primario">
+                Novo
+            </button>
+        </form>
+
         <table class="table">
             <thead>
                 <tr>
@@ -30,20 +36,20 @@ $lista_produtos = $produtoModel->listar();
                         <td><?php echo $produto['id'] ?></td>
                         <td><?php echo $produto['nome'] ?></td>
                         <td><?php echo $produto['descricao'] ?></td>
-                        <td><?php echo $produto['categoria'] ?></td>
+                        <td><?php echo $produto['id_categoria'] ?></td>
                         <td><?php echo $produto['preco'] ?></td>
-                        <td>
-                            <form action="editar.php" method="GET">
+                        <td class="btn-group">
+                            <form action="produto.php" method="GET">
                                 <input type="hidden" name="id" value="<?= $produto['id']; ?>">
-                                <button class="icon-btn">
-                                    <img class="icon" src="/site-adm/view/assets/img/editar.png" alt="icone editar">
+                                <button class="btn btn-secundario">
+                                    Editar
                                 </button>
                             </form>
 
                             <form action="excluir.php" method="POST">
                                 <input type="hidden" name="id" value="<?= $produto['id']; ?>">
-                                <button class="icon-btn" onclick="return confirm('Tem certaza que deseja excluir o filme?')">
-                                    <img class="icon" src="/site-adm/view/assets/img/deletar.png" alt="icone deletar">
+                                <button class="btn btn-terciario" onclick="return confirm('Tem certaza que deseja excluir o filme?')">
+                                    Deletar
                                 </button>
                             </form>
                         </td>

@@ -15,6 +15,12 @@ $lista_categorias = $categoriaModel->listar();
 
     <main>
         <h1>Categorias</h1>
+        
+        <form class="div-btn" action="categoria.php" method="GET">
+            <button class="btn btn-primario">
+                Novo
+            </button>
+        </form>
 
         <table class="table">
             <thead>
@@ -29,18 +35,18 @@ $lista_categorias = $categoriaModel->listar();
                     <tr>
                         <td><?php echo $categoria['id'] ?></td>
                         <td><?php echo $categoria['nome'] ?></td>
-                        <td>
-                            <form action="editarCategoria.php" method="GET">
+                        <td class="btn-group">
+                            <form action="categoria.php" method="GET">
                                 <input type="hidden" name="id" value="<?= $categoria['id']; ?>">
-                                <button class="icon-btn">
-                                    <img class="icon" src="/site-adm/view/assets/img/editar.png" alt="icone editar">
+                                <button class="btn btn-secundario">
+                                    Editar
                                 </button>
                             </form>
 
                             <form action="excluir.php" method="POST">
                                 <input type="hidden" name="id" value="<?= $categoria['id']; ?>">
-                                <button class="icon-btn" onclick="return confirm('Tem certaza que deseja excluir o filme?')">
-                                    <img class="icon" src="/site-adm/view/assets/img/deletar.png" alt="icone editar">
+                                <button class="btn btn-terciario" onclick="return confirm('Tem certaza que deseja excluir o filme?')">
+                                    Deletar
                                 </button>
                             </form>
                         </td>

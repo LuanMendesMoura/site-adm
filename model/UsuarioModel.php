@@ -20,31 +20,18 @@ class UsuarioModel {
         return $stmt->fetchAll();
     }
 
-    // public function buscarPorId($id) {
-    //     $indexUsuario = -1;
+    public function buscarPorId($id){
+        $query = "SELECT * FROM $this->tabela WHERE id = :id";
 
-    //     $array_filtrado = array_filter(
-    //         $this->usuarios,
-    //         function ($usuario, $index) use ($id, &$indexUsuario) {
-    //             if ($usuario['id'] == $id) {
-    //                 $indexUsuario = $index;
-    //                 return $usuario;
-    //             }
-    //         },
-    //         ARRAY_FILTER_USE_BOTH
-    //     );
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":id",$id);
+        $stmt->execute();
 
-    //     return $array_filtrado[$indexUsuario];
-    // }
+        return $stmt->fetch();
+    }
 
     // public function excluir($id) {
-    //     foreach ($this->usuarios as $index => $usuario) {
-    //         if ($usuario['id'] == $id) {
-    //             unset($usuarios[$id]);
-    //             return true; // Retorna true se a exclusão for bem-sucedida
-    //         }
-    //     }
-    //     return false; // Retorna false se o usuário não for encontrado
+    //     $query = "";
     // }
     
 }

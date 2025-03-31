@@ -1,0 +1,32 @@
+.main-form {
+    display: flex;
+    justify-content: start;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 30px;
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.form-input {
+    outline-color: gray;
+    font-size: 1rem;
+    letter-spacing: 1.5px;
+    border: 2px solid gainsboro;
+    border-radius: 5px;
+    padding: 10px;
+    max-width: 400px;
+    margin: 0 0 30px 0 ;
+}
+
+.form-btn {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 10px;
+}

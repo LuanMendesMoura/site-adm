@@ -14,6 +14,12 @@ $listar_usuarios = $usuarioModel->listar();
     <main>
         <h1>Usuários</h1>
 
+        <form class="div-btn" action="usuario.php" method="GET">
+            <button class="btn btn-primario">
+                Novo
+            </button>
+        </form>
+
         <table class="table">
             <thead>
                 <tr>
@@ -35,18 +41,18 @@ $listar_usuarios = $usuarioModel->listar();
                         <td><?php echo $usuario['telefone'] ?></td>
                         <td><?php echo $usuario['data_nascimento'] ?></td>
                         <td><?php echo $usuario['cpf'] ?></td>
-                        <td>
-                            <form action="editar.php" method="GET">
+                        <td class="btn-group">
+                            <form action="usuario.php" method="GET">
                                 <input type="hidden" name="id" value="<?= $usuario['id']; ?>">
-                                <button class="icon-btn">
-                                    <img class="icon" src="/site-adm/view/assets/img/editar.png" alt="icone editar">
+                                <button class="btn btn-secundario">
+                                    Editar
                                 </button>
                             </form>
 
                             <form action="excluir.php" method="POST">
                                 <input type="hidden" name="id" value="<?= $usuario['id']; ?>">
-                                <button class="icon-btn" onclick="return confirm('Tem certaza que deseja excluir o filme?')">
-                                    <img class="icon" src="/site-adm/view/assets/img/deletar.png" alt="icone deletar">
+                                <button class="btn btn-terciario" onclick="return confirm('Tem certaza que deseja excluir o filme?')">
+                                    Deletar
                                 </button>
                             </form>
                         </td>

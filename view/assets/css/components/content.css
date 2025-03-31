@@ -8,6 +8,7 @@ main {
     overflow: auto;
     grid-column: 2;
     grid-row: 2;
+    position: relative;
 
     p, .h1 {
         padding: 10px 20px 5px 20px;

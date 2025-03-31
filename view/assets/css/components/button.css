@@ -1,0 +1,38 @@
+.btn {
+    height: 30px;
+    width: 75px;
+    border: none;
+    border-radius: 3px;
+    color: var(--color-letras);
+    letter-spacing: 1px;
+
+    &.btn-primario {
+        margin: 15px;
+        background-color: var(--color-btn-primario);
+    }
+    &.btn-secundario {
+        background-color: var(--color-btn-secundario);
+    }
+    &.btn-terciario {
+        background-color: var(--color-btn-terciario);
+    }
+}
+
+.div-btn {
+    top: 0;
+    left: 0;
+    position: absolute;
+  }
+  .btn-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 7px;
+}
+
+@media screen and (max-width: 490px) {
+    .btn-group {
+        flex-direction: column;
+    }
+  
+  }
