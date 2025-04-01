@@ -38,12 +38,16 @@ if (isset($_GET['id'])) {
             <label class="form-label" for="cpf">CPF</label>
             <input class="form-input" type="text" id="cpf" value="<?php echo $usuario['cpf'] ?>">
             <div class="form-btn">
-                <button class="btn btn-terciario">
-                    Cancelar
-                </button>
-                <button class="btn btn-secundario">
-                    Salvar
-                </button>
+                <form action="usuarios.php">
+                    <button class="btn btn-terciario">
+                        Cancelar
+                    </button>
+                </form>
+                <form action="usuario_salvar.php">
+                    <button class="btn btn-secundario">
+                        Salvar
+                    </button>
+                </form>
             </div>
         </form>
     </main>

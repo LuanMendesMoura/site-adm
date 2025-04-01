@@ -35,12 +35,16 @@ if (isset($_GET['id'])) {
             <label class="form-label" for="preco">Preço</label>
             <input class="form-input" type="text" id="preco" value="<?php echo $produto['preco'] ?>">
             <div class="form-btn">
-                <button class="btn btn-terciario">
-                    Cancelar
-                </button>
-                <button class="btn btn-secundario">
-                    Salvar
-                </button>
+                <form action="produtos.php">
+                    <button class="btn btn-terciario">
+                        Cancelar
+                    </button>
+                </form>
+                <form action="produto_salvar.php">
+                    <button class="btn btn-secundario">
+                        Salvar
+                    </button>
+                </form>
             </div>
         </form>
     </main>

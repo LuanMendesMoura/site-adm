@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if (!empty($id)) {
         $usuarioModel = new UsuarioModel();
-        $sucesso = $usuarioModel->excluir($id);
+        $usuarioModel->excluir($_POST['id']);
     }
 }
 

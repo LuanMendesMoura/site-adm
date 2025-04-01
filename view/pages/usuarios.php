@@ -49,7 +49,7 @@ $listar_usuarios = $usuarioModel->listar();
                                 </button>
                             </form>
 
-                            <form action="excluir.php" method="POST">
+                            <form action="usuario_excluir.php" method="POST">
                                 <input type="hidden" name="id" value="<?= $usuario['id']; ?>">
                                 <button class="btn btn-terciario" onclick="return confirm('Tem certaza que deseja excluir o filme?')">
                                     Deletar
@@ -62,7 +62,7 @@ $listar_usuarios = $usuarioModel->listar();
         </table>
     </main>
 
-    <?php require_once './../components/footer.php'; ?>
+    <?php require_once './..components/footer.php'; ?>
 </body>
 
 </html>

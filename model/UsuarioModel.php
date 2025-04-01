@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . "/../config/Database.php";    
+
 class UsuarioModel {
 
     private $conn;
@@ -30,8 +31,14 @@ class UsuarioModel {
         return $stmt->fetch();
     }
 
-    // public function excluir($id) {
-    //     $query = "";
-    // }
+    public function excluir($id) {
+        $query = "DELETE FROM $this->tabela WHERE id = :id";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":id", $id);
+        $stmt->execute();
+
+        return $stmt->rowCount() > 0;
+    }
     
 }

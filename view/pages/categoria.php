@@ -26,12 +26,16 @@ if (isset($_GET['id'])) {
             <label class="form-label" for="nome">Nome</label>
             <input class="form-input" type="text" id="nome" value="<?php echo $categoria['nome'] ?>">
             <div class="form-btn">
-                <button class="btn btn-terciario">
-                    Cancelar
-                </button>
-                <button class="btn btn-secundario">
-                    Salvar
-                </button>
+                <form action="categorias.php">
+                    <button class="btn btn-terciario">
+                        Cancelar
+                    </button>
+                </form>
+                <form action="categoria_salvar.php" method="POST">
+                    <button class="btn btn-secundario">
+                        Salvar
+                    </button>
+                </form>
             </div>
         </form>
     </main>

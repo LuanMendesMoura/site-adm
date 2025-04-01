@@ -46,7 +46,7 @@ $lista_produtos = $produtoModel->listar();
                                 </button>
                             </form>
 
-                            <form action="excluir.php" method="POST">
+                            <form action="produto_excluir.php" method="POST">
                                 <input type="hidden" name="id" value="<?= $produto['id']; ?>">
                                 <button class="btn btn-terciario" onclick="return confirm('Tem certaza que deseja excluir o filme?')">
                                     Deletar

@@ -31,14 +31,36 @@ class  CategoriaModel {
         return $stmt->fetch();
     }
 
-    public function criar($id){
-        $query = "INSERT INTO (id,nome) $this->tabela WHERE id = :id";
+    public function excluir($id) {
+        $query = "DELETE FROM $this->tabela WHERE id = :id";
 
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(":id",$id);
+        $stmt->bindParam(":id", $id);
         $stmt->execute();
 
-        return $stmt->fetch();
+        return $stmt->rowCount() > 0;
+    }
+
+    public function cadastrar($nome){
+        $query = "INSERT INTO $this->tabela (nome) VALUES (:nome)";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":nome",$nome);
+        $stmt->execute();
+
+        return $stmt->rowCount() > 0;
+    }
+
+    public function editar($id, $nome){
+
+        $query = "UPDATE $this->tabela SET nome=:nome WHERE id=:id";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':nome', $nome);
+        $stmt->execute();
+
+        return $stmt->rowCount() > 0;        
     }
 
 }
