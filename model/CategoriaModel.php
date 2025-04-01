@@ -7,6 +7,9 @@ class  CategoriaModel {
     private $conn;
     private $tabela = "categorias";
 
+    public $id;
+    public $nome;
+
     public function __construct() {
         $db = new Database();
         $this->conn = $db->conectar();
@@ -45,7 +48,7 @@ class  CategoriaModel {
         $query = "INSERT INTO $this->tabela (nome) VALUES (:nome)";
 
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(":nome",$nome);
+        $stmt->bindParam(":nome", $nome);
         $stmt->execute();
 
         return $stmt->rowCount() > 0;
@@ -53,7 +56,7 @@ class  CategoriaModel {
 
     public function editar($id, $nome){
 
-        $query = "UPDATE $this->tabela SET nome=:nome WHERE id=:id";
+        $query = "UPDATE $this->tabela SET nome=:nome WHERE id = :id";
 
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':id', $id);

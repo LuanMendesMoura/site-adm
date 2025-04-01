@@ -40,4 +40,31 @@ class ProdutoModel {
 
         return $stmt->rowCount() > 0;
     }
+
+    public function cadastrar($nome, $descricao, $id_categoria, $preco) {
+        $query = "INSERT INTO $this->tabela (nome, descricao, id_categoria, preco) VALUES (:nome, :descricao, :id_categoria, :preco)";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':nome', $nome);
+        $stmt->bindParam(':descricao', $descricao);
+        $stmt->bindParam(':id_categoria', $id_categoria);
+        $stmt->bindParam(':preco', $preco);        
+        $stmt->execute();
+
+        return $stmt->rowCount() > 0;
+    }
+
+    public function editar($id, $nome, $descricao, $id_categoria, $preco) {
+        $query = "UPDATE $this->tabela SET nome=:nome, descricao=:descricao, id_categoria=:id_categoria, preco=:preco WHERE id = :id";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':nome', $nome);
+        $stmt->bindParam(':descricao', $descricao);
+        $stmt->bindParam(':id_categoria', $id_categoria);
+        $stmt->bindParam(':preco', $preco);
+        $stmt->execute();
+
+        return $stmt->rowCount() > 0;        
+    }
 }

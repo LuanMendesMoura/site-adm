@@ -1,6 +1,9 @@
 <?php 
 
 require_once './../../model/ProdutoModel.php';
+require_once './../../model/CategoriaModel.php';
+$categoriaModel = new CategoriaModel();
+$categorias = $categoriaModel->listar(); 
 
 if (isset($_GET['id'])) {
     $modo = 'EDICAO';
@@ -25,26 +28,37 @@ if (isset($_GET['id'])) {
     <?php require_once './../components/navbar.php'; ?>
     <?php require_once './../components/sidebar.php'; ?>
     <main class="main-form">
-        <form class="form" action="produtos.php">
+        <form class="form" action="produto_salvar.php" method="POST">
+            <input type="hidden" name="id" value="<?= $categoria['id']; ?>">
+
             <label class="form-label" for="nome">Nome</label>
-            <input class="form-input" type="text" id="nome" value="<?php echo $produto['nome'] ?>">
+            <input class="form-input" type="text" id="nome" name="nome" value="<?php echo $produto['nome'] ?>">
+
             <label class="form-label" for="descricao">Descrição</label>
-            <textarea class="form-input" id="descricao"><?php echo $produto['descricao'] ?></textarea>
+            <textarea class="form-input" id="descricao" name="descricao" ><?php echo $produto['descricao'] ?></textarea>
+
             <label class="form-label" for="id_categoria">Categoria</label>
-            <input class="form-input" type="text" id="id_categoria" value="<?php echo $produto['id_categoria'] ?>">
+            <select class="form-input" id="id_categoria" name="id_categoria">
+                <option value="">Selecione uma Categoria</option>
+                <?php foreach ($categorias as $categoria) { ?>
+                    <option value="<?php echo $categoria['id']; ?>" 
+                        <?php echo ($produto['id_categoria'] == $categoria['id']) ? 'selected' : ''; ?>>
+                        <?php echo $categoria['nome']; ?>
+                    </option>
+                <?php } ?>
+            </select>
+
+            <!-- <input class="form-input" type="text" id="id_categoria" name="id_categoria" value="<?php echo $produto['id_categoria'] ?>"> -->
+
             <label class="form-label" for="preco">Preço</label>
-            <input class="form-input" type="text" id="preco" value="<?php echo $produto['preco'] ?>">
+            <input class="form-input" type="text" id="preco" name="preco" value="<?php echo $produto['preco'] ?>">
             <div class="form-btn">
-                <form action="produtos.php">
-                    <button class="btn btn-terciario">
-                        Cancelar
-                    </button>
-                </form>
-                <form action="produto_salvar.php">
-                    <button class="btn btn-secundario">
-                        Salvar
-                    </button>
-                </form>
+                <a href="produtos.php" class="a btn btn-terciario">
+                    Cancelar
+                </a>
+                <button class="btn btn-secundario">
+                    Salvar
+                </button>
             </div>
         </form>
     </main>

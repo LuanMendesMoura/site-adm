@@ -22,20 +22,16 @@ if (isset($_GET['id'])) {
     <?php require_once './../components/navbar.php'; ?>
     <?php require_once './../components/sidebar.php'; ?>
     <main class="main-form">
-        <form class="form" action="categorias.php">
+        <form class="form" action="categoria_salvar.php" method="POST">
             <label class="form-label" for="nome">Nome</label>
-            <input class="form-input" type="text" id="nome" value="<?php echo $categoria['nome'] ?>">
+            <input  class="form-input" type="text" id="nome" name="nome" value="<?php echo $categoria['nome'] ?>">
             <div class="form-btn">
-                <form action="categorias.php">
-                    <button class="btn btn-terciario">
-                        Cancelar
-                    </button>
-                </form>
-                <form action="categoria_salvar.php" method="POST">
-                    <button class="btn btn-secundario">
-                        Salvar
-                    </button>
-                </form>
+                <a href="categorias.php" class="a btn btn-terciario">
+                    Cancelar
+                </a>
+                <button class="btn btn-secundario">
+                    Salvar
+                </button>
             </div>
         </form>
     </main>

@@ -45,7 +45,7 @@ $lista_categorias = $categoriaModel->listar();
 
                             <form action="categoria_excluir.php" method="POST">
                                 <input type="hidden" name="id" value="<?= $categoria['id']; ?>">
-                                <button class="btn btn-terciario" onclick="return confirm('Tem certaza que deseja excluir o filme?')">
+                                <button class="btn btn-terciario" onclick="return confirm('Tem certaza que deseja excluir esta categoria?')">
                                     Deletar
                                 </button>
                             </form>
