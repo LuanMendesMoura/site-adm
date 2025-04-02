@@ -41,31 +41,31 @@ class UsuarioModel {
         return $stmt->rowCount() > 0;
     }
 
-    public function cadastrar($nome, $email, $telefone, $data_nascimento, $cpf) {
+    public function cadastrar($usuario) {
         $query = "INSERT INTO $this->tabela (nome, email, telefone, data_nascimento, cpf) VALUES (:nome, :email, :telefone, :data_nascimento, :cpf)";
 
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(":nome", $nome);
-        $stmt->bindParam(":email", $email);
-        $stmt->bindParam(":telefone", $telefone);
-        $stmt->bindParam(":data_nascimento", $data_nascimento);
-        $stmt->bindParam(":cpf", $cpf);
+        $stmt->bindParam(":nome", $usuario['nome']);
+        $stmt->bindParam(":email", $usuario['email']);
+        $stmt->bindParam(":telefone", $usuario['telefone']);
+        $stmt->bindParam(":data_nascimento", $usuario['data_nascimento']);
+        $stmt->bindParam(":cpf", $usuario['cpf']);
         $stmt->execute();
         
         return $stmt->rowCount() > 0;
     }
 
-    public function editar($id, $nome, $email, $telefone, $data_nascimento, $cpf) {
+    public function editar($usuario) {
 
         $query = "UPDATE $this->tabela SET nome=:nome, email=:email, telefone=:telefone, data_nascimento=:data_nascimento, cpf=:cpf WHERE id = :id";
 
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':id', $id);
-        $stmt->bindParam(":nome", $nome);
-        $stmt->bindParam(":email", $email);
-        $stmt->bindParam(":telefone", $telefone);
-        $stmt->bindParam(":data_nascimento", $data_nascimento);
-        $stmt->bindParam(":cpf", $cpf);
+        $stmt->bindParam(':id', $usuario['id']);
+        $stmt->bindParam(":nome", $usuario['nome']);
+        $stmt->bindParam(":email", $usuario['email']);
+        $stmt->bindParam(":telefone", $usuario['telefone']);
+        $stmt->bindParam(":data_nascimento", $usuario['data_nascimento']);
+        $stmt->bindParam(":cpf", $usuario['cpf']);
         $stmt->execute();
 
         return $stmt->rowCount() > 0;        

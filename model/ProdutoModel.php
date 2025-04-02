@@ -13,7 +13,8 @@ class ProdutoModel {
         $this->conn = $db->conectar();
     }
     public function listar() {
-        $query = "SELECT $this->tabela.id, $this->tabela.nome, $this->tabela.descricao, $this->tabela.preco, $this->tabela.nome FROM $this->tabela INNER JOIN $this->tabelaFK ON $this->tabela.id_categoria = $this->tabelaFK.id";
+        // $query = "SELECT * FROM $this->tabela";
+        $query = "SELECT p.*, c.nome as categoria_nome FROM $this->tabela p INNER JOIN $this->tabelaFK c ON p.id_categoria = c.id; ";
         
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
@@ -36,35 +37,32 @@ class ProdutoModel {
 
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(":id", $id);
-        $stmt->execute();
+        return $stmt->execute();
 
-        return $stmt->rowCount() > 0;
     }
 
-    public function cadastrar($nome, $descricao, $id_categoria, $preco) {
+    public function cadastrar($produto) {
         $query = "INSERT INTO $this->tabela (nome, descricao, id_categoria, preco) VALUES (:nome, :descricao, :id_categoria, :preco)";
 
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':nome', $nome);
-        $stmt->bindParam(':descricao', $descricao);
-        $stmt->bindParam(':id_categoria', $id_categoria);
-        $stmt->bindParam(':preco', $preco);        
+        $stmt->bindParam(':nome', $produto["nome"]);
+        $stmt->bindParam(':descricao', $produto["descricao"]);
+        $stmt->bindParam(':id_categoria', $produto["id_categoria"]);
+        $stmt->bindParam(':preco', $produto["preco"]);
         $stmt->execute();
 
         return $stmt->rowCount() > 0;
     }
 
-    public function editar($id, $nome, $descricao, $id_categoria, $preco) {
+    public function editar($produto) {
         $query = "UPDATE $this->tabela SET nome=:nome, descricao=:descricao, id_categoria=:id_categoria, preco=:preco WHERE id = :id";
 
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':id', $id);
-        $stmt->bindParam(':nome', $nome);
-        $stmt->bindParam(':descricao', $descricao);
-        $stmt->bindParam(':id_categoria', $id_categoria);
-        $stmt->bindParam(':preco', $preco);
-        $stmt->execute();
-
-        return $stmt->rowCount() > 0;        
+        $stmt->bindParam(':id', $produto["id"]);
+        $stmt->bindParam(':nome', $produto["nome"]);
+        $stmt->bindParam(':descricao', $produto["descricao"]);
+        $stmt->bindParam(':id_categoria', $produto["id_categoria"]);
+        $stmt->bindParam(':preco', $produto["preco"]);
+        return $stmt->execute();
     }
 }

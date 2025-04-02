@@ -29,16 +29,16 @@ if (isset($_GET['id'])) {
     <?php require_once './../components/sidebar.php'; ?>
     <main class="main-form">
         <form class="form" action="produto_salvar.php" method="POST">
-            <input type="hidden" name="id" value="<?= $categoria['id']; ?>">
+            <input type="hidden" name="id" required value="<?= $produto['id']; ?>">
 
             <label class="form-label" for="nome">Nome</label>
-            <input class="form-input" type="text" id="nome" name="nome" value="<?php echo $produto['nome'] ?>">
+            <input class="form-input" type="text" id="nome" name="nome" required value="<?php echo $produto['nome'] ?>">
 
             <label class="form-label" for="descricao">Descrição</label>
-            <textarea class="form-input" id="descricao" name="descricao" ><?php echo $produto['descricao'] ?></textarea>
+            <textarea class="form-input" id="descricao" name="descricao" required><?php echo $produto['descricao'] ?></textarea>
 
             <label class="form-label" for="id_categoria">Categoria</label>
-            <select class="form-input" id="id_categoria" name="id_categoria">
+            <select class="form-input" id="id_categoria" name="id_categoria" required>
                 <option value="">Selecione uma Categoria</option>
                 <?php foreach ($categorias as $categoria) { ?>
                     <option value="<?php echo $categoria['id']; ?>" 
@@ -48,10 +48,9 @@ if (isset($_GET['id'])) {
                 <?php } ?>
             </select>
 
-            <!-- <input class="form-input" type="text" id="id_categoria" name="id_categoria" value="<?php echo $produto['id_categoria'] ?>"> -->
-
             <label class="form-label" for="preco">Preço</label>
-            <input class="form-input" type="text" id="preco" name="preco" value="<?php echo $produto['preco'] ?>">
+            <input class="form-input" type="number" min="1" max="999999" id="preco" name="preco" required value="<?php echo $produto['preco'] ?>">
+
             <div class="form-btn">
                 <a href="produtos.php" class="a btn btn-terciario">
                     Cancelar

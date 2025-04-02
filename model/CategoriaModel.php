@@ -39,31 +39,27 @@ class  CategoriaModel {
 
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(":id", $id);
-        $stmt->execute();
-
-        return $stmt->rowCount() > 0;
+        return $stmt->execute();
+        
     }
 
-    public function cadastrar($nome){
+    public function cadastrar($categoria){
         $query = "INSERT INTO $this->tabela (nome) VALUES (:nome)";
 
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(":nome", $nome);
-        $stmt->execute();
+        $stmt->bindParam(":nome", $categoria["nome"]);
+        return $stmt->execute();
 
-        return $stmt->rowCount() > 0;
     }
 
-    public function editar($id, $nome){
+    public function editar($categoria){
 
         $query = "UPDATE $this->tabela SET nome=:nome WHERE id = :id";
 
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':id', $id);
-        $stmt->bindParam(':nome', $nome);
-        $stmt->execute();
-
-        return $stmt->rowCount() > 0;        
+        $stmt->bindParam(':id', $categoria["id"]);
+        $stmt->bindParam(':nome', $categoria["nome"]);
+        return $stmt->execute();
     }
 
 }

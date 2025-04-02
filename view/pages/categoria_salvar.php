@@ -2,18 +2,28 @@
 
 require_once './../../model/CategoriaModel.php';
 
-$categoriaModel = new CategoriaModel();
 
-if($_SERVER["REQUEST_METHOD"] === "POST"){
-     if (!empty($_POST['id'])){
-        // Fluxo para Editar
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
-        $categoriaModel->editar($_POST['id'],$_POST['nome']);
+    $categoriaModel = new CategoriaModel();
 
+     if (empty($_POST['id'])){
+        // Fluxo para Criar
+
+        $sucesso = $categoriaModel->cadastrar([
+            'nome' => $_POST['nome'],
+        ]);
     } else {
-        // Fluxo para Cadastro 
-       
-        $categoriaModel->cadastrar($_POST['nome']);
+        // Fluxo para Editar 
+        
+        $sucesso = $categoriaModel->editar([
+            'id' => $_POST['id'],
+            'nome' => $_POST['nome'],
+        ]);
+    }
+
+    if (!$sucesso){
+        return "ERRO";
     }
 }
 

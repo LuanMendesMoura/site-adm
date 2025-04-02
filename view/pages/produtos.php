@@ -36,7 +36,7 @@ $lista_produtos = $produtoModel->listar();
                         <td><?php echo $produto['id'] ?></td>
                         <td><?php echo $produto['nome'] ?></td>
                         <td><?php echo $produto['descricao'] ?></td>
-                        <td><?php echo $produto['id_categoria'] ?></td>
+                        <td><?php echo $produto['categoria_nome'] ?></td>
                         <td><?php echo $produto['preco'] ?></td>
                         <td class="btn-group">
                             <form action="produto.php" method="GET">

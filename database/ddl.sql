@@ -14,7 +14,7 @@
     nome VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     telefone VARCHAR(30) NOT NULL,
-    data_nascimento DATE,
+    data_nascimento DATE NOT NULL,
     cpf VARCHAR(11) NOT NULL
   );
 

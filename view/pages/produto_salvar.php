@@ -2,21 +2,36 @@
 
 require_once './../../model/ProdutoModel.php';
 
-$produtoModel = new ProdutoModel();
 
-if($_SERVER["REQUEST_METHOD"] === "POST"){
-    if (isset($POST['id'])){
-        // Fluxo para Editar
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
-        $produtoModel->editar($_POST['id'],$_POST['nome'],$_POST['descricao'],$_POST['id_categoria'],$_POST['preco']);
-        echo "edicao";
+    $produtoModel = new ProdutoModel();
 
+     if (empty($_POST['id'])){
+        // Fluxo para Criar
+
+        $sucesso = $produtoModel->cadastrar([
+            'nome' => $_POST['nome'],
+            'descricao' => $_POST['descricao'],
+            'id_categoria' => $_POST['id_categoria'],
+            'preco' => $_POST['preco'],
+
+        ]);
     } else {
-        // Fluxo para Cadastro 
-       
-        $produtoModel->cadastrar($_POST['nome'],$_POST['descricao'],$_POST['id_categoria'],$_POST['preco']);
-        echo "cadastro";
+        // Fluxo para Editar 
+        
+        $sucesso = $produtoModel->editar([
+            'id' => $_POST['id'],
+            'nome' => $_POST['nome'],
+            'descricao' => $_POST['descricao'],
+            'id_categoria' => $_POST['id_categoria'],
+            'preco' => $_POST['preco'],
+        ]);
+    }
+
+    if (!$sucesso){
+        return "ERRO";
     }
 }
 
-// return header("Location: produtos.php");
+return header("Location: produtos.php");
