@@ -33,7 +33,7 @@ $lista_produtos = $produtoModel->listar();
             <tbody>
                 <?php foreach ($lista_produtos as $produto) { ?>
                     <tr>
-                        <td><?php echo $produto['id'] ?></td>
+                        <td class="id"><?php echo $produto['id'] ?></td>
                         <td><?php echo $produto['nome'] ?></td>
                         <td><?php echo $produto['descricao'] ?></td>
                         <td><?php echo $produto['categoria_nome'] ?></td>

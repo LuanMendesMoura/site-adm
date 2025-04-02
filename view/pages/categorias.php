@@ -33,7 +33,7 @@ $lista_categorias = $categoriaModel->listar();
             <tbody>
                 <?php foreach ($lista_categorias as $categoria) { ?>
                     <tr>
-                        <td><?php echo $categoria['id'] ?></td>
+                        <td class="id"><?php echo $categoria['id'] ?></td>
                         <td><?php echo $categoria['nome'] ?></td>
                         <td class="btn-group">
                             <form action="categoria.php" method="GET">

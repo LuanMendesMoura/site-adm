@@ -35,7 +35,7 @@ $listar_usuarios = $usuarioModel->listar();
             <tbody>
                 <?php foreach ($listar_usuarios as $usuario) { ?>
                     <tr>
-                        <td><?php echo $usuario['id'] ?></td>
+                        <td class="id"><?php echo $usuario['id'] ?></td>
                         <td><?php echo $usuario['nome'] ?></td>
                         <td><?php echo $usuario['email'] ?></td>
                         <td><?php echo $usuario['telefone'] ?></td>

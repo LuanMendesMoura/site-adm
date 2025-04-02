@@ -10,11 +10,11 @@ header {
     .navbar{
         height: 100%;
         display: flex;
+        justify-content: end;
     }
     img {
         cursor: pointer;
-        position: relative;
-        margin: 0 auto;
+        margin: 0 20px 0 20px;
         width: 50px;
         object-fit: contain;
     }

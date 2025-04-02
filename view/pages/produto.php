@@ -49,7 +49,7 @@ if (isset($_GET['id'])) {
             </select>
 
             <label class="form-label" for="preco">Preço</label>
-            <input class="form-input" type="number" min="1" max="999999" id="preco" name="preco" required value="<?php echo $produto['preco'] ?>">
+            <input class="form-input" type="number" min="1" max="99999" step="0.01" id="preco" name="preco" required value="<?php echo $produto['preco'] ?>">
 
             <div class="form-btn">
                 <a href="produtos.php" class="a btn btn-terciario">

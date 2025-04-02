@@ -12,9 +12,9 @@
 :root {
     font-size: 16px;
     --color-content: #fff;
-    --color-footer: #282A35;
-    --color-navbar: #282A35 ;
-    --color-sidebar: oklch(0.685 0.169 237.323);
+    --color-footer: #666666;
+    --color-navbar: #666666 ;
+    --color-sidebar: #69c3ff;
     --color-letras: #fff;
     --color-letras-sidebar: #fff;
     --color-btn-primario: rgb(13, 202, 13);
