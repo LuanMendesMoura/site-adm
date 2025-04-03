@@ -16,5 +16,4 @@
         </ul>
     </nav>
     <button class="openbtn" onclick="openMenu()"><img src="../assets/img/menu.png" alt=""></button>
-    <script src="../assets/js/script.js"></script>
 </aside>

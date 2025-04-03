@@ -41,7 +41,7 @@ aside {
         visibility: hidden;
         width: 150px;
         height: 180px;
-        border-radius: 0px 20px 50% 20px;
+        border-radius: 0px 0px 10px 0px;
 
         ul {
             text-align: start;
