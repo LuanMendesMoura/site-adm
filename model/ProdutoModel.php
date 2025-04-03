@@ -49,9 +49,8 @@ class ProdutoModel {
         $stmt->bindParam(':descricao', $produto["descricao"]);
         $stmt->bindParam(':id_categoria', $produto["id_categoria"]);
         $stmt->bindParam(':preco', $produto["preco"]);
-        $stmt->execute();
+        return $stmt->execute();
 
-        return $stmt->rowCount() > 0;
     }
 
     public function editar($produto) {
@@ -64,5 +63,6 @@ class ProdutoModel {
         $stmt->bindParam(':id_categoria', $produto["id_categoria"]);
         $stmt->bindParam(':preco', $produto["preco"]);
         return $stmt->execute();
+        
     }
 }

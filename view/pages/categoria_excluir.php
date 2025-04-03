@@ -6,8 +6,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $id = ["id"];
 
     if (!empty($id)) {
-        $categoriaModel = new CategoriaModel();
-        $categoriaModel->excluir($_POST['id']);
+        try {
+            $categoriaModel = new CategoriaModel();
+            $categoriaModel->excluir($_POST['id']);
+        } catch (Exception) {
+            return header("Location: tela_erro.php");
+      }
     }
 }
 

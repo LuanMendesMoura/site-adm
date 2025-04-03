@@ -36,9 +36,8 @@ class UsuarioModel {
 
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(":id", $id);
-        $stmt->execute();
+        return $stmt->execute();
 
-        return $stmt->rowCount() > 0;
     }
 
     public function cadastrar($usuario) {
@@ -50,9 +49,8 @@ class UsuarioModel {
         $stmt->bindParam(":telefone", $usuario['telefone']);
         $stmt->bindParam(":data_nascimento", $usuario['data_nascimento']);
         $stmt->bindParam(":cpf", $usuario['cpf']);
-        $stmt->execute();
+        return $stmt->execute();
         
-        return $stmt->rowCount() > 0;
     }
 
     public function editar($usuario) {
@@ -66,9 +64,7 @@ class UsuarioModel {
         $stmt->bindParam(":telefone", $usuario['telefone']);
         $stmt->bindParam(":data_nascimento", $usuario['data_nascimento']);
         $stmt->bindParam(":cpf", $usuario['cpf']);
-        $stmt->execute();
+        return $stmt->execute();
 
-        return $stmt->rowCount() > 0;        
     }
-    
 }

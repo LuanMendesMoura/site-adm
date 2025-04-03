@@ -8,6 +8,7 @@
 @import url(pages/tabela.css);
 @import url(pages/produtos.css);
 @import url(pages/form.css);
+@import url(pages/tela_erro.css);
 
 :root {
     font-size: 16px;
