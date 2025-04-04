@@ -11,6 +11,7 @@
 @import url(pages/tela_erro.css);
 
 :root {
+    font-family: "Montserrat", sans-serif;    
     font-size: 16px;
     --color-content: #fff;
     --color-footer: #666666;
@@ -24,7 +25,6 @@
 }
 
 body {
-    font-family: "Montserrat", sans-serif;
     display: grid;
     grid-template-columns: 200px 1fr;
     grid-template-rows: 68px 1fr 22px;
